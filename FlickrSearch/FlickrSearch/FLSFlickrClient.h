@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)init NS_UNAVAILABLE;
 
 - (void)fetchWithQuery:(NSString *)query;
+- (void)fetchWithQuery:(NSString *)query page:(int)page;
 
 @end
 

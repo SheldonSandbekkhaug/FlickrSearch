@@ -13,6 +13,15 @@ NSString *const FLSCellIdentifier = @"FLSCellIdentifier";
 /** The photos to be shown in the collection view. */
 @property(nonatomic) NSMutableArray<FLSPhoto *> *photos;
 
+/** The string to search Flickr for. */
+@property(nonatomic) NSString *query;
+
+/** YES if the app is loading another page. NO otherwise. */
+@property(nonatomic) BOOL isLoading;
+
+/** The page of results that was most recently requested to be loaded. */
+@property(nonatomic) int lastLoadedPage;
+
 @end
 
 @implementation FLSDataSource
@@ -23,9 +32,12 @@ NSString *const FLSCellIdentifier = @"FLSCellIdentifier";
   }
 
   _photos = [NSMutableArray array];
+  _query = query;
 
   [_collectionView reloadData];
-  [_client fetchWithQuery:query];
+  _isLoading = YES;
+  [_client fetchWithQuery:_query];
+  _lastLoadedPage = 1;
 }
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView
@@ -34,20 +46,40 @@ NSString *const FLSCellIdentifier = @"FLSCellIdentifier";
       [collectionView dequeueReusableCellWithReuseIdentifier:FLSCellIdentifier
                                                 forIndexPath:indexPath];
 
-  cell.photo = _photos[indexPath.item];
+  if (indexPath.item < _photos.count) {
+    cell.photo = _photos[indexPath.item];
+  }
+  
+  if (indexPath.item == _photos.count - 1) {
+    // The last item in the collection view triggers a new page to be loaded
+    if (_query.length && !_isLoading) {
+      _isLoading = YES;
+      _lastLoadedPage++;
+      [_client fetchWithQuery:_query page:_lastLoadedPage];
+    }
+  }
+
   // TODO: Add image cache
   return cell;
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section {
-  // TODO: Add infinite scrolling
   return _photos.count;
 }
 
 - (void)didReceiveSearchResults:(NSMutableArray<FLSPhoto *> *)results {
-  [_photos addObjectsFromArray:results];
-  [_collectionView reloadData];
+  dispatch_async(dispatch_get_main_queue(), ^{
+    self->_isLoading = NO;
+    NSMutableArray <NSIndexPath *> *indexPaths = [NSMutableArray array];
+    for (int i = (int)self->_photos.count; i < self->_photos.count + results.count; ++i) {
+      NSIndexPath *path = [NSIndexPath indexPathForItem:i inSection:0];
+      [indexPaths addObject:path];
+    }
+    
+    [self->_photos addObjectsFromArray:results];
+    [self->_collectionView insertItemsAtIndexPaths:indexPaths];
+  });
 }
 
 @end

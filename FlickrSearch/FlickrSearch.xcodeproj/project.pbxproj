@@ -14,6 +14,9 @@
 		35FB946221DA9FC0009C42E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35FB946021DA9FC0009C42E2 /* LaunchScreen.storyboard */; };
 		35FB946521DA9FC0009C42E2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FB946421DA9FC0009C42E2 /* main.m */; };
 		35FB946D21DAA1AC009C42E2 /* FLSDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FB946C21DAA1AC009C42E2 /* FLSDataSource.m */; };
+		35FB947021DAA47D009C42E2 /* FLSFlickrClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FB946F21DAA47D009C42E2 /* FLSFlickrClient.m */; };
+		35FB947321DAA970009C42E2 /* FLSPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FB947221DAA970009C42E2 /* FLSPhoto.m */; };
+		35FB947621DAACBC009C42E2 /* FLSPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FB947521DAACBC009C42E2 /* FLSPhotoCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +32,12 @@
 		35FB946421DA9FC0009C42E2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		35FB946B21DAA1AC009C42E2 /* FLSDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FLSDataSource.h; sourceTree = "<group>"; };
 		35FB946C21DAA1AC009C42E2 /* FLSDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FLSDataSource.m; sourceTree = "<group>"; };
+		35FB946E21DAA47D009C42E2 /* FLSFlickrClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FLSFlickrClient.h; sourceTree = "<group>"; };
+		35FB946F21DAA47D009C42E2 /* FLSFlickrClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FLSFlickrClient.m; sourceTree = "<group>"; };
+		35FB947121DAA970009C42E2 /* FLSPhoto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FLSPhoto.h; sourceTree = "<group>"; };
+		35FB947221DAA970009C42E2 /* FLSPhoto.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FLSPhoto.m; sourceTree = "<group>"; };
+		35FB947421DAACBC009C42E2 /* FLSPhotoCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FLSPhotoCollectionViewCell.h; sourceTree = "<group>"; };
+		35FB947521DAACBC009C42E2 /* FLSPhotoCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FLSPhotoCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +81,12 @@
 				35FB946421DA9FC0009C42E2 /* main.m */,
 				35FB946B21DAA1AC009C42E2 /* FLSDataSource.h */,
 				35FB946C21DAA1AC009C42E2 /* FLSDataSource.m */,
+				35FB946E21DAA47D009C42E2 /* FLSFlickrClient.h */,
+				35FB946F21DAA47D009C42E2 /* FLSFlickrClient.m */,
+				35FB947121DAA970009C42E2 /* FLSPhoto.h */,
+				35FB947221DAA970009C42E2 /* FLSPhoto.m */,
+				35FB947421DAACBC009C42E2 /* FLSPhotoCollectionViewCell.h */,
+				35FB947521DAACBC009C42E2 /* FLSPhotoCollectionViewCell.m */,
 			);
 			path = FlickrSearch;
 			sourceTree = "<group>";
@@ -147,8 +162,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				35FB945A21DA9FBF009C42E2 /* ViewController.m in Sources */,
+				35FB947621DAACBC009C42E2 /* FLSPhotoCollectionViewCell.m in Sources */,
 				35FB946521DA9FC0009C42E2 /* main.m in Sources */,
+				35FB947321DAA970009C42E2 /* FLSPhoto.m in Sources */,
 				35FB946D21DAA1AC009C42E2 /* FLSDataSource.m in Sources */,
+				35FB947021DAA47D009C42E2 /* FLSFlickrClient.m in Sources */,
 				35FB945721DA9FBF009C42E2 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
