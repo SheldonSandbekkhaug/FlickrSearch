@@ -15,6 +15,8 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
 
+  // TODO: Add search bar at the top
+
   UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
   _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame
                                        collectionViewLayout:layout];
@@ -26,6 +28,8 @@
   [_collectionView setBackgroundColor:[UIColor whiteColor]];
 
   [self.view addSubview:_collectionView];
+
+  [_dataSource showPicturesWithQuery:@"dogs"];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView
