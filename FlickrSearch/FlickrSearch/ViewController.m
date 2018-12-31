@@ -23,7 +23,7 @@ static const CGFloat kMargin = 10;
   topBar.translatesAutoresizingMaskIntoConstraints = NO;
   [self.view addSubview:topBar];
   [NSLayoutConstraint activateConstraints:@[
-    [topBar.heightAnchor constraintEqualToConstant:90],
+    [topBar.heightAnchor constraintEqualToConstant:80],
     [topBar.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
     [topBar.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],
     [topBar.topAnchor constraintEqualToAnchor:self.view.topAnchor
@@ -34,6 +34,7 @@ static const CGFloat kMargin = 10;
   searchButton.translatesAutoresizingMaskIntoConstraints = NO;
   [topBar addSubview:searchButton];
 
+  // TODO: Tap "Enter" to search (UITextFieldDelegate textFieldShouldReturn)
   _searchBox = [[UITextField alloc] init];
   _searchBox.translatesAutoresizingMaskIntoConstraints = NO;
   [topBar addSubview:_searchBox];
@@ -45,12 +46,13 @@ static const CGFloat kMargin = 10;
                                               constant:-kMargin],
   ]];
   _searchBox.placeholder = @"Type to search";
+  _searchBox.borderStyle = UITextBorderStyleLine;
 
   [searchButton setTitle:@"Search" forState:UIControlStateNormal];  // TODO: Internationalize
   searchButton.backgroundColor = [UIColor blueColor];
   [NSLayoutConstraint activateConstraints:@[
     [searchButton.widthAnchor constraintEqualToConstant:90],
-    [searchButton.trailingAnchor constraintEqualToAnchor:topBar.trailingAnchor constant:kMargin],
+    [searchButton.trailingAnchor constraintEqualToAnchor:topBar.trailingAnchor constant:-kMargin],
     [searchButton.topAnchor constraintEqualToAnchor:topBar.topAnchor constant:kMargin],
     [searchButton.bottomAnchor constraintEqualToAnchor:topBar.bottomAnchor constant:-kMargin],
   ]];

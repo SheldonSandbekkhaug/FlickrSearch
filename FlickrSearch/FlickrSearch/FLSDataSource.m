@@ -49,7 +49,7 @@ NSString *const FLSCellIdentifier = @"FLSCellIdentifier";
   if (indexPath.item < _photos.count) {
     cell.photo = _photos[indexPath.item];
   }
-  
+
   if (indexPath.item == _photos.count - 1) {
     // The last item in the collection view triggers a new page to be loaded
     if (_query.length && !_isLoading) {
@@ -71,12 +71,12 @@ NSString *const FLSCellIdentifier = @"FLSCellIdentifier";
 - (void)didReceiveSearchResults:(NSMutableArray<FLSPhoto *> *)results {
   dispatch_async(dispatch_get_main_queue(), ^{
     self->_isLoading = NO;
-    NSMutableArray <NSIndexPath *> *indexPaths = [NSMutableArray array];
+    NSMutableArray<NSIndexPath *> *indexPaths = [NSMutableArray array];
     for (int i = (int)self->_photos.count; i < self->_photos.count + results.count; ++i) {
       NSIndexPath *path = [NSIndexPath indexPathForItem:i inSection:0];
       [indexPaths addObject:path];
     }
-    
+
     [self->_photos addObjectsFromArray:results];
     [self->_collectionView insertItemsAtIndexPaths:indexPaths];
   });
