@@ -6,7 +6,7 @@
 static const CGFloat kMargin = 10;
 
 // TODO: Add prefix to all classes
-@interface ViewController ()
+@interface ViewController () <UITextFieldDelegate>
 
 @property(nonatomic) UITextField *searchBox;
 @property(nonatomic) UICollectionView *collectionView;
@@ -34,7 +34,6 @@ static const CGFloat kMargin = 10;
   searchButton.translatesAutoresizingMaskIntoConstraints = NO;
   [topBar addSubview:searchButton];
 
-  // TODO: Tap "Enter" to search (UITextFieldDelegate textFieldShouldReturn)
   _searchBox = [[UITextField alloc] init];
   _searchBox.translatesAutoresizingMaskIntoConstraints = NO;
   [topBar addSubview:_searchBox];
@@ -47,6 +46,7 @@ static const CGFloat kMargin = 10;
   ]];
   _searchBox.placeholder = @"Type to search";
   _searchBox.borderStyle = UITextBorderStyleLine;
+  _searchBox.delegate = self;
 
   [searchButton setTitle:@"Search" forState:UIControlStateNormal];  // TODO: Internationalize
   searchButton.backgroundColor = [UIColor blueColor];
@@ -82,6 +82,7 @@ static const CGFloat kMargin = 10;
 
 - (void)startSearch {
   [_dataSource showPicturesWithQuery:_searchBox.text];
+  [_searchBox endEditing:YES];
 }
 
 - (UIEdgeInsets)safeAreaInsets {
@@ -104,5 +105,10 @@ static const CGFloat kMargin = 10;
 }
 
 // TODO: Handle screen rotation
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+  [self startSearch];
+  return YES;
+}
 
 @end
