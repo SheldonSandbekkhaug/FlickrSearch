@@ -6,6 +6,8 @@ extern NSString* const FLSCellIdentifier;
 
 @interface FLSDataSource : NSObject <UICollectionViewDataSource>
 
+@property(nonatomic, weak) UICollectionView* collectionView;
+
 - (void)showPicturesWithQuery:(NSString*)query;
 
 @end

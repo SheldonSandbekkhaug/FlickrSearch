@@ -48,6 +48,7 @@
 
 - (void)prepareForReuse {
   _photo = nil;
+  _imageView.image = nil;
   [super prepareForReuse];
 }
 

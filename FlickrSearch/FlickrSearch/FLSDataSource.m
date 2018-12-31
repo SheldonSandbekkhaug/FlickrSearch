@@ -24,6 +24,7 @@ NSString *const FLSCellIdentifier = @"FLSCellIdentifier";
 
   _photos = [NSMutableArray array];
 
+  [_collectionView reloadData];
   [_client fetchWithQuery:query];
 }
 
@@ -46,6 +47,7 @@ NSString *const FLSCellIdentifier = @"FLSCellIdentifier";
 
 - (void)didReceiveSearchResults:(NSMutableArray<FLSPhoto *> *)results {
   [_photos addObjectsFromArray:results];
+  [_collectionView reloadData];
 }
 
 @end
