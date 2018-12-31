@@ -4,8 +4,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class FLSPhoto;
 
+/** Delegate protocol that gets notified when search results are available. */
 @protocol FLSFlickrClientDelegate
 
+/** Called when a new page of search results is available. */
 - (void)didReceiveSearchResults:(NSMutableArray<FLSPhoto *> *)results;
 
 @end

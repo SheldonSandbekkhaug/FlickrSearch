@@ -8,8 +8,10 @@ NS_ASSUME_NONNULL_BEGIN
 /** URL of the image. */
 @property(nonatomic, readonly) NSString *url;
 
-// TODO: Use width and height
+/** Width of the image. */
 @property(nonatomic) CGFloat width;
+
+/** Height of the image. */
 @property(nonatomic) CGFloat height;
 
 - (instancetype)initWithURL:(NSString *)url;
