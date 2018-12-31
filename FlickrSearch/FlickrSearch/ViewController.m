@@ -6,7 +6,7 @@
 static const CGFloat kMargin = 10;
 
 // TODO: Add prefix to all classes
-@interface ViewController () <UICollectionViewDelegateFlowLayout>
+@interface ViewController ()
 
 @property(nonatomic) UITextField *searchBox;
 @property(nonatomic) UICollectionView *collectionView;
@@ -67,7 +67,7 @@ static const CGFloat kMargin = 10;
   _dataSource = [[FLSDataSource alloc] init];
   _dataSource.collectionView = _collectionView;
   _collectionView.dataSource = _dataSource;
-  [_collectionView setDelegate:self];
+  _collectionView.delegate = _dataSource;
   [_collectionView setBackgroundColor:[UIColor whiteColor]];
 
   [self.view addSubview:_collectionView];
@@ -78,12 +78,6 @@ static const CGFloat kMargin = 10;
     [_collectionView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],
     [_collectionView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor],
   ]];
-}
-
-- (CGSize)collectionView:(UICollectionView *)collectionView
-                    layout:(UICollectionViewLayout *)collectionViewLayout
-    sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-  return CGSizeMake(50, 50);
 }
 
 - (void)startSearch {
@@ -108,5 +102,7 @@ static const CGFloat kMargin = 10;
 
   return UIEdgeInsetsMake(kStatusBarHeight, 0, 0, 0);
 }
+
+// TODO: Handle screen rotation
 
 @end

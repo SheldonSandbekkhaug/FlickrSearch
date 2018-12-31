@@ -1,6 +1,7 @@
 #import "FLSDataSource.h"
 
 #import "FLSFlickrClient.h"
+#import "FLSPhoto.h"
 #import "FLSPhotoCollectionViewCell.h"
 
 NSString *const FLSCellIdentifier = @"FLSCellIdentifier";
@@ -66,6 +67,16 @@ NSString *const FLSCellIdentifier = @"FLSCellIdentifier";
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section {
   return _photos.count;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                    layout:(UICollectionViewLayout *)collectionViewLayout
+    sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+  if (indexPath.item < _photos.count) {
+    FLSPhoto *photo = _photos[indexPath.item];
+    return CGSizeMake(photo.width, photo.height);
+  }
+  return CGSizeZero;
 }
 
 - (void)didReceiveSearchResults:(NSMutableArray<FLSPhoto *> *)results {
