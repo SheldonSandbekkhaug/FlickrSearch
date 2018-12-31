@@ -1,6 +1,7 @@
 #import "ViewController.h"
 
 #import "FLSDataSource.h"
+#import "FLSPhotoCollectionViewCell.h"
 
 // TODO: Add prefix to all classes
 @interface ViewController () <UICollectionViewDelegateFlowLayout>
@@ -20,7 +21,7 @@
   UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
   _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame
                                        collectionViewLayout:layout];
-  [_collectionView registerClass:[UICollectionViewCell class]
+  [_collectionView registerClass:[FLSPhotoCollectionViewCell class]
       forCellWithReuseIdentifier:FLSCellIdentifier];
   _dataSource = [[FLSDataSource alloc] init];
   _collectionView.dataSource = _dataSource;
